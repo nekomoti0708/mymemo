@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webメモ帳</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px; /* 最小高さ */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none; /* 手動でのリサイズを無効化 */
+            overflow: hidden; /* 自動調整時のスクロールバーを隠す */
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* ボタンラッパー */
+        .button-wrapper {
+            display: flex;
+            gap: 10px; /* ボタン間の間隔 */
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* カスタムファイル選択ボタン */
+        .file-input-wrapper {
+            position: relative;
+        }
+
+        #fileInput {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-input-button {
+            padding: 10px 15px;
+            background-color: rgb(0, 0, 255);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .file-input-button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Webメモ帳</h1>
+
+<div class="button-wrapper">
+    <!-- ファイル選択ボタン -->
+    <div class="file-input-wrapper">
+        <button class="file-input-button">ファイルを選択</button>
+        <input type="file" id="fileInput" />
+    </div>
+
+    <!-- ファイル保存ボタン -->
+    <button onclick="saveFile()">ファイル保存</button>
+</div>
+
+<textarea id="textArea" placeholder="ここにメモを入力してください..."></textarea>
+
+<script>
+    let currentFileName = null; // 現在開いているファイル名を保持する変数
+
+    // テキストエリアの自動リサイズ
+    コンスト テキストエリア = ドキュメント。elementbyid を取得します(‘textarea’);
+ テキストエリア。イベントリスナーを追加します(‘input’, 機能() {
+ テキストエリア。スタイル.高さ = ‘auto’; // 高砂をうち一揆ソートト
+ テキストエリア。スタイル.高さ = テキストエリア。スクロール高さ + ‘px’; // インデグニ合イァガレティサンタコサニグニフ
+    });
+
+    // 莠ァイ 繝ゥミィミィ
+ 文書。elementbyid を取得します(‘fileInput’).イベントリスナーを追加します(‘change’, 機能(e) {
+        コンスト ファイル = e。対象.ファイル[0];
+        もし (ファイル) {
+ currentfilename = ファイル。名前; // 莠ァハ ゙ 名 ゙ ゙ ゙ ゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙
+            コンスト 読者 = 新しい FileReader の();
+ 読者。オンロード = 機能(イベント) {
+ テキストエリア。価値 = イベント。対象.結果;
+ テキストエリア。イベントをディスパッチします(新しい イベント(‘input’)); // テキルトエトリアノ高砂ヲシテレ
+            };
+ 読者。readastext(ファイル);
+        }
+    });
+
+    // 莠ァハ ゙ 傾然 son
+    機能 ファイルを保存() {
+        コンスト テキスト = テキストエリア。価値;
+
+        しましょう ファイル名;
+        もし (現在のファイル名) {
+            // 瀹ァハ ガガゥンケレ トイイウルン合, 繝ノ繝ァイハナ名出レシオンサン
+ filename = currentFileName;
+        } 他の {
+            // 瀹ァハ ゙ガギョン カ レ デイナイイグァン合,「 新錫テキトト」ヲ ゙ラズロ ゙レ トト名トシ デイトゥン用
+ ファイル名 = ‘新 錫 TeaChiTo。txt’;
+        }
+
+        コンスト ブロブ = 新しい ブロブ([テキスト], { タイプ: ‘text/plain’ });
+        コンスト リンク = ドキュメント。要素を作成します(の 「A」);
+ リンク。href = URL。オブジェクトurlを作成します(ブロブ);
+        
+        // RECTION son suurneuァイ ゙ 名称 ゙指し
+ リンク。ダウンロード = ファイル名;
+ リンク。クリック();
+    }
+</スクリプト>
+
+</体>
+</html>
+
+
+
