@@ -1,39 +1,39 @@
-<！DOCTYPE html>
-<html ラハミン=「ja」 の>
-<頭>
-    <メト シ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ ゙ =「UTF-8」 出 su>
-    <メト 名 前=「」 ュールーリート を コモテマツ="width=device-width, initial-scale=1。"0" 出 ス>
-    <ったーイ ト ゙>Web メトレズ</ったーイ ト ゙>
-    <クタイ ,>
- {
- 冉 moyothezuァ miritiー: アトリアア ゙ル, ジカッシナ ソリィィ;
- noiーaoyo: 20 にーにーしー diteima suppx を;
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webメモ帳</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
         }
- Teaki Toetiariah {
- 勺: 百%;
- 盤小の高草:百px を; /* 錫キ小高嶺 */
- 瀹ィマーンギョ: 10 ニクイーンザレ diteima suppx ヲ;
- 瀹moistoのdici-leuん: 16 にracorduationけいしditeおらりまsupxを;
- 國の環境: 1px の o。s。ccc;
- border-radius: 5px o;
- イキイ語: な し; /* テツトゥガッシン出国ノリ イ シハミロ 朧ヲ無リヲ */
- ヲーレーヘールーレー: ゥサー; /* 莠ャ驛ス之ディカーレーリーレーニーリートーレートーレーオーレートゥーレー */
+        textarea {
+            width: 100%;
+            min-height: 100px; /* 最小高さ */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none; /* 手動でのリサイズを無効化 */
+            overflow: hidden; /* 自動調整時のスクロールバーを隠す */
         }
- 涔多男 {
- 瀹ィマーンギョ: 10 ニクイフサレ diteima suppx ヲ 15 ニ リクルードチンシ det おう リマ suppx ヲ;
- 瀹moistoのdici-leuん: 16 にracorduationけいしditeおらりまsupxを;
- 莠ィャン: #4CAF50;
- 井:ルーリト;
- 國の環境:な し;
- border-radius: 5px o;
- 嘉ーソー ゙: ゙ィイハニハタ;
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
- 涔多男:READー {
- けいれん: #45a049;
+        button:hover {
+            background-color: #45a049;
         }
 
- /* ツゥゥゥハィトゥゥゥ ミャンニッ？ゥゥハィゥゥィィィィ */
- 。ボタンラッパー {
+        /* ボタンラッパー */
+        .button-wrapper {
             display: flex;
             gap: 10px; /* ボタン間の間隔 */
             align-items: center;
@@ -91,50 +91,50 @@
     let currentFileName = null; // 現在開いているファイル名を保持する変数
 
     // テキストエリアの自動リサイズ
-    コンスト テキストエリア = ドキュメント。elementbyid を取得します(‘textarea’);
- テキストエリア。イベントリスナーを追加します(‘input’, 機能() {
- テキストエリア。スタイル.高さ = ‘auto’; // 高砂をうち一揆ソートト
- テキストエリア。スタイル.高さ = テキストエリア。スクロール高さ + ‘px’; // インデグニ合イァガレティサンタコサニグニフ
+    const textArea = document.getElementById('textArea');
+    textArea.addEventListener('input', function() {
+        textArea.style.height = 'auto'; // 高さを一旦リセット
+        textArea.style.height = textArea.scrollHeight + 'px'; // 内容に合わせた高さに設定
     });
 
-    // 莠ァイ 繝ゥミィミィ
- 文書。elementbyid を取得します(‘fileInput’).イベントリスナーを追加します(‘change’, 機能(e) {
-        コンスト ファイル = e。対象.ファイル[0];
-        もし (ファイル) {
- currentfilename = ファイル。名前; // 莠ァハ ゙ 名 ゙ ゙ ゙ ゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙゙
-            コンスト 読者 = 新しい FileReader の();
- 読者。オンロード = 機能(イベント) {
- テキストエリア。価値 = イベント。対象.結果;
- テキストエリア。イベントをディスパッチします(新しい イベント(‘input’)); // テキルトエトリアノ高砂ヲシテレ
+    // ファイル読み込み
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            currentFileName = file.name; // ファイル名を記録
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                textArea.value = event.target.result;
+                textArea.dispatchEvent(new Event('input')); // テキストエリアの高さを調整
             };
- 読者。readastext(ファイル);
+            reader.readAsText(file);
         }
     });
 
-    // 莠ァハ ゙ 傾然 son
-    機能 ファイルを保存() {
-        コンスト テキスト = テキストエリア。価値;
+    // ファイル保存
+    function saveFile() {
+        const text = textArea.value;
 
-        しましょう ファイル名;
-        もし (現在のファイル名) {
-            // 瀹ァハ ガガゥンケレ トイイウルン合, 繝ノ繝ァイハナ名出レシオンサン
- filename = currentFileName;
-        } 他の {
-            // 瀹ァハ ゙ガギョン カ レ デイナイイグァン合,「 新錫テキトト」ヲ ゙ラズロ ゙レ トト名トシ デイトゥン用
- ファイル名 = ‘新 錫 TeaChiTo。txt’;
+        let fileName;
+        if (currentFileName) {
+            // ファイルが開かれている場合、そのファイル名で保存
+            fileName = currentFileName;
+        } else {
+            // ファイルが開かれていない場合、「新規テキスト」をデフォルト名として使用
+            fileName = '新規テキスト.txt';
         }
 
-        コンスト ブロブ = 新しい ブロブ([テキスト], { タイプ: ‘text/plain’ });
-        コンスト リンク = ドキュメント。要素を作成します(の 「A」);
- リンク。href = URL。オブジェクトurlを作成します(ブロブ);
+        const blob = new Blob([text], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
         
-        // RECTION son suurneuァイ ゙ 名称 ゙指し
- リンク。ダウンロード = ファイル名;
- リンク。クリック();
+        // 保存するファイル名を指定
+        link.download = fileName;
+        link.click();
     }
-</スクリプト>
+</script>
 
-</体>
+</body>
 </html>
 
 
